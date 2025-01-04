@@ -10,7 +10,7 @@
                 "-g",
                 "${file}",
                 "-o",
-                "${fileDirname}/${fileBasenameNoExtension}.o",
+                "${fileDirname}/outputFiles/${fileBasenameNoExtension}.o",
             ],
             "options": {
                 "cwd": "${fileDirname}"
@@ -27,7 +27,7 @@
         {
             "label": "Run C++ File",
             "type": "shell",
-            "command": "echo '=======================' && echo '    Running Program' && echo '=======================' && ${fileDirname}/${fileBasenameNoExtension}.o && echo '\n======================='",
+            "command": "echo '=======================' && echo '    Running Program' && echo '=======================' && ${fileDirname}/outputFiles/${fileBasenameNoExtension}.o && echo '\n======================='",
             "problemMatcher": [],
             "group": {
                 "kind": "test",
