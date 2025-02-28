@@ -76,9 +76,30 @@ class DoublyLinkedList{
     }
 
     void deleteAtFirst(){
+        if(head==NULL){
+            return;
+        }
         Node* temp = head;
         head = head->next;
         free(temp);
+    }
+    void deleteAtLast(){
+        if(head==NULL){
+            return;
+        } 
+        if(head->next==NULL){
+            Node* temp = head;
+            head = NULL;
+            free(temp);
+        } else {
+            Node* cur = head;
+            while (cur->next->next!=NULL){
+                cur = cur->next;
+            }
+            Node* temp = cur->next;
+            cur->next = NULL;
+            free(temp);
+        }
     }
 };
 
@@ -98,6 +119,9 @@ int main(){
 
     dll.deleteAtFirst();
     dll.deleteAtFirst();
+
+    dll.deleteAtLast();
+    dll.deleteAtLast();
 
     dll.traverse();
 
