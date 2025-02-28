@@ -101,6 +101,32 @@ class DoublyLinkedList{
             free(temp);
         }
     }
+    void deleteAtSpecificPosition(int position){
+        if(head==NULL){
+            return;
+        }
+        if(position==1){
+            deleteAtFirst();
+            return;
+        }
+        Node* cur = head;
+        int counter = 1;
+        while (cur!=NULL && counter < position-1){
+            cur = cur->next;
+            counter++;
+        }
+        if(cur==NULL){
+            cout<<"Position is out of bound";
+            return;
+        } 
+        Node* temp = cur->next;
+        cur->next = temp->next;
+
+        if(temp->next!=NULL){
+            temp->next->prev = cur;
+        }
+        free(temp);
+    }
 };
 
 int main(){
@@ -118,10 +144,14 @@ int main(){
     dll.insertAtSpecificPosition(13, 10);
 
     dll.deleteAtFirst();
-    dll.deleteAtFirst();
+    // dll.deleteAtFirst();
 
+    // dll.deleteAtLast();
     dll.deleteAtLast();
-    dll.deleteAtLast();
+
+    dll.deleteAtSpecificPosition(3);
+    dll.deleteAtSpecificPosition(4);
+    dll.deleteAtSpecificPosition(19);
 
     dll.traverse();
 
